@@ -51,7 +51,7 @@ rm -rf %{buildroot}
 
 rm -f %{buildroot}%{_bindir}/*
 
-%find_lang %{bname}
+%find_lang %{name}
 
 %post -n %{libname} -p /sbin/ldconfig 
 
@@ -64,7 +64,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %{_libdir}/*.so.%{major}*
 
-%files -n %{develname} -f %{bname}.lang
+%files -n %{develname} -f %{name}.lang
 %defattr(-,root,root)
 %doc AUTHORS COPYING ChangeLog INSTALL NEWS README* TODO
 %doc %dir %{_datadir}/qalculate
