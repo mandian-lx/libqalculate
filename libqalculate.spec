@@ -16,6 +16,7 @@ BuildRequires:	libgmp-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	libglib2-devel
+BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 Libraries needed by qalculator.
