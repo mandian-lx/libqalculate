@@ -69,10 +69,9 @@ rm -rf %{buildroot}
 
 %files -n %{develname} -f %{name}.lang
 %defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog INSTALL NEWS README* TODO
+%doc AUTHORS ChangeLog NEWS README* TODO
 %doc %dir %{_datadir}/qalculate
 %doc %{_docdir}/%{name}-%{version}
-
 %{_includedir}/*
 %{_libdir}/*.*a
 %{_libdir}/*.so
