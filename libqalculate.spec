@@ -6,8 +6,8 @@
 Summary:	Libqalculate is the library for qalculate
 Name:		libqalculate
 Version:	0.9.6
-Release:	%mkrel 3
-License:	GPL
+Release:	%mkrel 4
+License:	GPLv2+
 Group:		System/Libraries
 URL:		http://qalculate.sourceforge.net
 Source:		http://prdownloads.sourceforge.net/libqalculate/libqalculate-%{version}.tar.bz2
@@ -65,13 +65,14 @@ rm -rf %{buildroot}
 %files -n %{libname}
 %defattr(-,root,root)
 %{_libdir}/*.so.%{major}*
+%{_datadir}/qalculate/*.xml
 
 %files -n %{develname} -f %{name}.lang
 %defattr(-,root,root)
 %doc AUTHORS COPYING ChangeLog INSTALL NEWS README* TODO
 %doc %dir %{_datadir}/qalculate
 %doc %{_docdir}/%{name}-%{version}
-%{_datadir}/qalculate/*.xml
+
 %{_includedir}/*
 %{_libdir}/*.*a
 %{_libdir}/*.so
