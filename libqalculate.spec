@@ -3,7 +3,7 @@
 %define libname %mklibname %{bname} %{major}
 %define develname %mklibname %{bname} -d  
 
-Summary:	Libqalculate is the library for qalculate
+Summary:	The library for qalculate
 Name:		libqalculate
 Version:	0.9.6
 Release:	%mkrel 6
@@ -23,7 +23,7 @@ Libraries needed by qalculator.
 
 %package -n %{libname}
 Group:		System/Libraries
-Summary:	Libqalculate is the library for qalculate 
+Summary:	The library for qalculate 
 Obsoletes:	%mklibname %{bname} 3
 
 %description -n %{libname}
