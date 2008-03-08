@@ -10,12 +10,18 @@ Release:	%mkrel 7
 License:	GPLv2+
 Group:		System/Libraries
 URL:		http://qalculate.sourceforge.net
-Source:		http://prdownloads.sourceforge.net/libqalculate/libqalculate-%{version}.tar.bz2
+Source0:	http://prdownloads.sourceforge.net/libqalculate/libqalculate-%{version}.tar.bz2
+Patch0:		libqalculate-0.9.6-cln12.patch
 BuildRequires:	cln-devel
 BuildRequires:	libgmp-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	libglib2-devel
+BuildRequires:	readline-devel
+BuildRequires:	ncurses-devel
+#(tpg) needed by autogen.sh
+BuildRequires:	intltool
+BuildRequires:	libtool
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
@@ -42,8 +48,12 @@ Headers and development files for libqalculator.
 
 %prep
 %setup -q
+%patch0 -p0
 
 %build
+#(tpg) needed for patch 0
+./autogen.sh
+
 %configure2_5x
 %make
 
