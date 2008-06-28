@@ -6,12 +6,13 @@
 Summary:	The library for qalculate
 Name:		libqalculate
 Version:	0.9.6
-Release:	%mkrel 8
+Release:	%mkrel 9
 License:	GPLv2+
 Group:		System/Libraries
 URL:		http://qalculate.sourceforge.net
 Source0:	http://prdownloads.sourceforge.net/libqalculate/libqalculate-%{version}.tar.bz2
 Patch0:		libqalculate-0.9.6-cln12.patch
+Patch1:		libqalculate-gcc43.diff
 BuildRequires:	cln-devel
 BuildRequires:	libgmp-devel
 BuildRequires:	libxml2-devel
@@ -22,7 +23,7 @@ BuildRequires:	ncurses-devel
 #(tpg) needed by autogen.sh
 BuildRequires:	intltool
 BuildRequires:	libtool
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Libraries needed by qalculator.
@@ -49,6 +50,7 @@ Headers and development files for libqalculator.
 %prep
 %setup -q
 %patch0 -p0
+%patch1 -p0
 
 %build
 #(tpg) needed for patch 0
