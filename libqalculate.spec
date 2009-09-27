@@ -6,7 +6,7 @@
 Summary:	The library for qalculate
 Name:		libqalculate
 Version:	0.9.6
-Release:	%mkrel 10
+Release:	%mkrel 11
 License:	GPLv2+
 Group:		System/Libraries
 URL:		http://qalculate.sourceforge.net
