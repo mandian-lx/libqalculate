@@ -1,18 +1,16 @@
 %define bname qalculate
-%define major 4
+%define major 5
 %define libname %mklibname %{bname} %{major}
 %define develname %mklibname %{bname} -d  
 
 Summary:	The library for qalculate
 Name:		libqalculate
-Version:	0.9.6
-Release:	%mkrel 11
+Version:	0.9.7
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		System/Libraries
 URL:		http://qalculate.sourceforge.net
-Source0:	http://prdownloads.sourceforge.net/libqalculate/libqalculate-%{version}.tar.bz2
-Patch0:		libqalculate-0.9.6-cln12.patch
-Patch1:		libqalculate-gcc43.diff
+Source0:	http://downloads.sourceforge.net/project/qalculate/libqalculate/%{name}-%{version}/%{name}-%{version}.tar.bz2
 BuildRequires:	cln-devel
 BuildRequires:	libgmp-devel
 BuildRequires:	libxml2-devel
@@ -20,9 +18,6 @@ BuildRequires:	perl(XML::Parser)
 BuildRequires:	libglib2-devel
 BuildRequires:	readline-devel
 BuildRequires:	ncurses-devel
-#(tpg) needed by autogen.sh
-BuildRequires:	intltool
-BuildRequires:	libtool
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -30,14 +25,14 @@ Libraries needed by qalculator.
 
 %package -n %{libname}
 Group:		System/Libraries
-Summary:	The library for qalculate 
+Summary:	The library for qalculate
 Obsoletes:	%mklibname %{bname} 3
 
 %description -n %{libname}
-Libraries needed by qalculator.
+Libraries needed by qalculate.
 
 %package -n %{develname}
-Summary:	Headers and development files for libqalculator
+Summary:	Development files for %{name}
 Group:		Development/Other
 Requires:	%{libname} = %{version}-%{release}
 Provides:       %{bname}-devel  
@@ -45,17 +40,12 @@ Provides:	%{name}-devel
 Obsoletes:	%mklibname %{bname} 3 -d
 
 %description -n %{develname}
-Headers and development files for libqalculator.
+Headers and development files for %{name}.
 
 %prep
 %setup -q
-%patch0 -p0
-%patch1 -p0
 
 %build
-#(tpg) needed for patch 0
-./autogen.sh
-
 %configure2_5x
 %make
 
