@@ -1,12 +1,12 @@
 %define bname qalculate
 %define major 5
 %define libname %mklibname %{bname} %{major}
-%define develname %mklibname %{bname} -d  
+%define develname %mklibname %{bname} -d
 
 Summary:	The library for qalculate
 Name:		libqalculate
 Version:	0.9.7
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		System/Libraries
 URL:		http://qalculate.sourceforge.net
@@ -26,7 +26,9 @@ Libraries needed by qalculator.
 %package -n %{libname}
 Group:		System/Libraries
 Summary:	The library for qalculate
-Obsoletes:	%mklibname %{bname} 3
+Obsoletes:	%{mklibname %{bname} 3}
+Conflicts:	%{mklibname %{bname} 5} < 0.9.7-2
+Requires:	%{name}-data = %{version}-%{release}
 
 %description -n %{libname}
 Libraries needed by qalculate.
@@ -35,12 +37,20 @@ Libraries needed by qalculate.
 Summary:	Development files for %{name}
 Group:		Development/Other
 Requires:	%{libname} = %{version}-%{release}
-Provides:       %{bname}-devel  
+Provides:       %{bname}-devel
 Provides:	%{name}-devel
 Obsoletes:	%mklibname %{bname} 3 -d
 
 %description -n %{develname}
 Headers and development files for %{name}.
+
+%package data
+Summary:	Data files for %{name}
+Group:		System/Libraries
+Requires:	%{libname} = %{version}-%{release}
+
+%description data
+Data files for %{name}.
 
 %prep
 %setup -q
@@ -71,9 +81,12 @@ rm -rf %{buildroot}
 %files -n %{libname}
 %defattr(-,root,root)
 %{_libdir}/*.so.%{major}*
+
+%files data -f %{name}.lang
+%defattr(-,root,root)
 %{_datadir}/qalculate/*.xml
 
-%files -n %{develname} -f %{name}.lang
+%files -n %{develname}
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog NEWS README* TODO
 %doc %dir %{_datadir}/qalculate
