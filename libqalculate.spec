@@ -6,7 +6,7 @@
 Summary:	The library for qalculate
 Name:		libqalculate
 Version:	0.9.7
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPLv2+
 Group:		System/Libraries
 URL:		http://qalculate.sourceforge.net
@@ -27,7 +27,7 @@ Libraries needed by qalculator.
 Group:		System/Libraries
 Summary:	The library for qalculate
 Obsoletes:	%{mklibname %{bname} 3}
-Conflicts:	%{mklibname %{bname} 5} < 0.9.7-2
+Conflicts:	%{mklibname %{bname} 5} <= 0.9.7-2
 Requires:	%{name}-data = %{version}-%{release}
 
 %description -n %{libname}
