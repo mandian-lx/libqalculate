@@ -6,19 +6,18 @@
 Summary:	The library for qalculate
 Name:		libqalculate
 Version:	0.9.7
-Release:	%mkrel 8
+Release:	12
 License:	GPLv2+
 Group:		System/Libraries
 URL:		http://qalculate.sourceforge.net
 Source0:	http://downloads.sourceforge.net/project/qalculate/libqalculate/%{name}-%{version}/%{name}-%{version}.tar.bz2
-BuildRequires:	cln-devel
-BuildRequires:	libgmp-devel
-BuildRequires:	libxml2-devel
+BuildRequires:	pkgconfig(cln)
+BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:	pkgconfig(ncurses)
 BuildRequires:	perl(XML::Parser)
-BuildRequires:	libglib2-devel
+BuildRequires:	libgmp-devel
 BuildRequires:	readline-devel
-BuildRequires:	ncurses-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Libraries needed by qalculator.
@@ -26,7 +25,6 @@ Libraries needed by qalculator.
 %package -n %{libname}
 Group:		System/Libraries
 Summary:	The library for qalculate
-Obsoletes:	%{mklibname %{bname} 3}
 Requires:	%{name}-data = %{version}-%{release}
 
 %description -n %{libname}
@@ -36,9 +34,8 @@ Libraries needed by qalculate.
 Summary:	Development files for %{name}
 Group:		Development/Other
 Requires:	%{libname} = %{version}-%{release}
-Provides:       %{bname}-devel
+Provides:	%{bname}-devel
 Provides:	%{name}-devel
-Obsoletes:	%mklibname %{bname} 3 -d
 
 %description -n %{develname}
 Headers and development files for %{name}.
@@ -57,42 +54,27 @@ Data files for %{name}.
 %setup -q
 
 %build
-%configure2_5x
+%configure2_5x --disable-static
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 rm -f %{buildroot}%{_bindir}/*
 
 %find_lang %{name}
 
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig 
-%endif
-
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig 
-%endif
-
-%clean
-rm -rf %{buildroot}
-
 %files -n %{libname}
-%defattr(-,root,root)
 %{_libdir}/*.so.%{major}*
 
 %files data -f %{name}.lang
-%defattr(-,root,root)
 %{_datadir}/qalculate/*.xml
 
 %files -n %{develname}
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog NEWS README* TODO
 %doc %dir %{_datadir}/qalculate
 %doc %{_docdir}/%{name}-%{version}
 %{_includedir}/*
-%{_libdir}/*.*a
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
+
