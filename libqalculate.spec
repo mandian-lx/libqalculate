@@ -16,7 +16,7 @@ BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(ncurses)
 BuildRequires:	perl(XML::Parser)
-BuildRequires:	libgmp-devel
+BuildRequires:	gmp-devel
 BuildRequires:	readline-devel
 
 %description
