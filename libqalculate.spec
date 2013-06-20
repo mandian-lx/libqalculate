@@ -6,7 +6,7 @@
 Summary:	The library for qalculate
 Name:		libqalculate
 Version:	0.9.7
-Release:	13
+Release:	14
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://qalculate.sourceforge.net
@@ -75,3 +75,4 @@ rm -f %{buildroot}%{_bindir}/*
 %doc %{_docdir}/%{name}-%{version}
 %{_includedir}/*
 %{_libdir}/*.so
+%{_libdir}/pkgconfig/*.pc
