@@ -6,7 +6,7 @@
 Summary:	The library for qalculate
 Name:		libqalculate
 Version:	0.9.7
-Release:	22
+Release:	23
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://qalculate.sourceforge.net
@@ -53,7 +53,7 @@ Data files for %{name}.
 %setup -q
 
 %build
-%configure2_5x --disable-static
+%configure --disable-static
 %make
 
 %install
