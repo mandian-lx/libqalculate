@@ -3,6 +3,8 @@
 %define libname	%mklibname %{bname} %{major}
 %define devname	%mklibname %{bname} -d
 
+%define _disable_lto 1
+
 Summary:	The library for qalculate
 Name:		libqalculate
 Version:	0.9.7
