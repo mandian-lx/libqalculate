@@ -105,6 +105,6 @@ autoreconf -fiv
 %make
 
 %install
-%make_install
+%makeinstall_std
 
 %find_lang %{name}
