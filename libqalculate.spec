@@ -94,6 +94,7 @@ Data files for %{name}.
 
 %prep
 %setup -q
+touch config.h.in
 
 %build
 pushd docs/reference
