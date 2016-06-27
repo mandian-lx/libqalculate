@@ -16,6 +16,7 @@ Source0:  https://github.com/Qalculate/%{name}/archive/%{name}-%{version}.tar.gz
 BuildRequires:	doxygen
 BuildRequires:	gmp-devel
 BuildRequires:	readline-devel
+BuildRequires:	intltool
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	pkgconfig(cln)
 BuildRequires:	pkgconfig(glib-2.0)
