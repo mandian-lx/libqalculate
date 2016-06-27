@@ -11,7 +11,7 @@ Release:	1
 License:	GPLv2+
 Group:		System/Libraries
 Url:    	https://qalculate.github.io/
-Source0:  https://github.com/Qalculate/%{name}/archive/v%{version}.tar.gz
+Source0:  https://github.com/Qalculate/%{name}/archive/%{name}-%{version}.tar.gz
 
 BuildRequires:	doxygen
 BuildRequires:	gmp-devel
@@ -100,7 +100,6 @@ pushd docs/reference
 doxygen
 popd
 
-autoreconf -fiv
 %configure
 %make
 
