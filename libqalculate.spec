@@ -1,17 +1,17 @@
 %define sname	qalc
 %define bname	qalculate
-%define major	6
+%define major	9
 %define libname	%mklibname %{bname} %{major}
 %define devname	%mklibname %{bname} -d
 
 Summary:	The library for Qalculate!
 Name:	 	libqalculate
-Version:	0.9.9
+Version:	0.9.12
 Release:	1
 License:	GPLv2+
 Group:		System/Libraries
 Url:		https://qalculate.github.io/
-Source0:	https://github.com/Qalculate/%{name}/archive/%{name}-%{version}.tar.gz
+Source0:	https://github.com/Qalculate/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:	doxygen
 BuildRequires:	gmp-devel
