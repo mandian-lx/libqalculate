@@ -11,14 +11,15 @@ Release:	1
 License:	GPLv2+
 Group:		System/Libraries
 Url:		https://qalculate.github.io/
-Source0:	https://github.com/Qalculate/%{name}/releases/download/v%{version}a/%{name}-%{version}.tar.gz
+Source0:	https://github.com/Qalculate/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
+BuildRequires:	intltool
 BuildRequires:	doxygen
 BuildRequires:	gmp-devel
+BuildRequires:	mpfr-devel
 BuildRequires:	readline-devel
-BuildRequires:	intltool
 BuildRequires:	perl(XML::Parser)
-BuildRequires:	pkgconfig(cln)
-BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	pkgconfig(libcurl)
+BuildRequires:	pkgconfig(icu-uc)
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(ncurses)
 
