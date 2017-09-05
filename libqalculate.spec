@@ -1,6 +1,6 @@
 %define sname	qalc
 %define bname	qalculate
-%define major	10
+%define major	11
 %define libname	%mklibname %{bname} %{major}
 %define devname	%mklibname %{bname} -d
 
@@ -12,6 +12,7 @@ License:	GPLv2+
 Group:		System/Libraries
 Url:		https://qalculate.github.io/
 Source0:	https://github.com/Qalculate/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
+BuildRequires:	intltool
 BuildRequires:	doxygen
 BuildRequires:	gmp-devel
 BuildRequires:	mpfr-devel
@@ -98,7 +99,10 @@ Data files for %{name}.
 %apply_patches
 
 %build
+export CXXFLAGS="%{optflags} -std=c++11"
+
 # binaries
+#autoreconf -fiv
 %configure
 %make
 
