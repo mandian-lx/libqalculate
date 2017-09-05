@@ -1,18 +1,17 @@
 %define sname	qalc
 %define bname	qalculate
-%define major	6
+%define major	10
 %define libname	%mklibname %{bname} %{major}
 %define devname	%mklibname %{bname} -d
 
 Summary:	The library for Qalculate!
 Name:	 	libqalculate
-Version:	0.9.9
+Version:	1.0.0
 Release:	1
 License:	GPLv2+
 Group:		System/Libraries
 Url:		https://qalculate.github.io/
-Source0:	https://github.com/Qalculate/%{name}/archive/%{name}-%{version}.tar.gz
-
+Source0:	https://github.com/Qalculate/%{name}/releases/download/v%{version}a/%{name}-%{version}.tar.gz
 BuildRequires:	doxygen
 BuildRequires:	gmp-devel
 BuildRequires:	readline-devel
@@ -53,7 +52,7 @@ Summary:	The library for qalculate
 Requires:	%{name}-data = %{version}-%{release}
 
 %description -n %{libname}
-Libraries needed by Qalculate!.
+Shared library for Qalculate!.
 
 %files -n %{libname}
 %{_libdir}/libqalculate.so.%{major}*
@@ -68,7 +67,7 @@ Provides:	%{bname}-devel = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 
 %description -n %{devname}
-Headers and development files for %{name}.
+Headers and development files for Qalculate!.
 
 %files -n %{devname}
 %doc AUTHORS ChangeLog NEWS README* TODO
@@ -98,10 +97,12 @@ Data files for %{name}.
 %setup -q
 
 %build
+# docs
 pushd docs/reference
 doxygen
 popd
 
+# binaries
 autoreconf -fiv
 %configure
 %make
@@ -109,5 +110,6 @@ autoreconf -fiv
 %install
 %makeinstall_std
 
+# locales
 %find_lang %{name}
 
