@@ -12,7 +12,6 @@ License:	GPLv2+
 Group:		System/Libraries
 Url:		https://qalculate.github.io/
 Source0:	https://github.com/Qalculate/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:	intltool
 BuildRequires:	doxygen
 BuildRequires:	gmp-devel
 BuildRequires:	mpfr-devel
@@ -96,17 +95,17 @@ Data files for %{name}.
 
 %prep
 %setup -q
+%apply_patches
 
 %build
+# binaries
+%configure
+%make
+
 # docs
 pushd docs/reference
 doxygen
 popd
-
-# binaries
-autoreconf -fiv
-%configure
-%make
 
 %install
 %makeinstall_std
