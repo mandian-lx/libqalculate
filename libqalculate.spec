@@ -1,6 +1,6 @@
 %define sname	qalc
 %define bname	qalculate
-%define major	10
+%define major	11
 %define libname	%mklibname %{bname} %{major}
 %define devname	%mklibname %{bname} -d
 
@@ -96,17 +96,20 @@ Data files for %{name}.
 
 %prep
 %setup -q
+%apply_patches
 
 %build
+export CXXFLAGS="%{optflags} -std=c++11"
+
+# binaries
+#autoreconf -fiv
+%configure
+%make
+
 # docs
 pushd docs/reference
 doxygen
 popd
-
-# binaries
-autoreconf -fiv
-%configure
-%make
 
 %install
 %makeinstall_std
